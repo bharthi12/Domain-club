@@ -13,6 +13,7 @@ urlpatterns = [
     path("leaderboard/", include("leaderboard.urls")), path("badges/", include("badges.urls")),
     path("events/", include("events.urls")), path("blogs/", include("blog.urls")),
     path("robots.txt", robots_txt, name="robots"), path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
+    path("api/", include("puzzles.urls"))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
