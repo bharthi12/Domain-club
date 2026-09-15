@@ -30,7 +30,7 @@ TEMPLATES = [{
     ]},
 }]
 WSGI_APPLICATION = "config.wsgi.application"
-ASGI_APPLICATION = "config.asgi.application"
+
 DATABASE_URL = os.getenv("DATABASE_URL", "")
 
 if DATABASE_URL.startswith(("postgres://", "postgresql://")):
