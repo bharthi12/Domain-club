@@ -1,1 +1,652 @@
-{% extends 'base.html' %}{% block title %}Our Team | Mathematics Club{% endblock %}{% block content %}<section class="page"><div class="page-heading"><div><p class="eyebrow">The people behind the problems</p><h1>Meet<br>The Crew.</h1></div><p class="marker">Powered by curiosity</p></div><div class="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">{% for member in team %}<article class="stagger-item">{% if member.photo %}<figure class="image-cutout h-72"><img src="{{ member.photo.url }}" alt="{{ member.name }}"></figure>{% else %}<div class="image-cutout h-72 flex items-center justify-center text-8xl">∑</div>{% endif %}<div class="paper-card mt-4"><p class="section-kicker">{{ member.role }}</p><h2 class="mt-2 text-4xl leading-[.8]">{{ member.name }}</h2><p class="mt-3 font-bold">{{ member.branch_year }}</p><p class="mt-3">{{ member.bio }}</p></div></article>{% empty %}<p class="marker">The crew will be announced soon.</p>{% endfor %}</div></section>{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Crew | Mathematics Club DBIT{% endblock %}
+
+{% block content %}
+
+<section class="page">
+
+  <!-- Team Header -->
+  <div class="page-heading">
+    <div>
+      <div class="team-header-badge">
+        <span class="pulse-icon">⚡</span>
+        S-RANK MATH SQUAD
+      </div>
+
+      <p class="eyebrow mt-2">
+        The architects of mathematical mischief
+      </p>
+
+      <h1>
+        Meet<br>
+        <span class="accent">The Crew.</span>
+      </h1>
+    </div>
+
+    <div class="flex flex-col items-end gap-2">
+      <p class="marker">
+        Tap Pokéballs to Summon The Crew! 🔴⚡
+      </p>
+
+      <span class="text-sm font-bold text-ink-soft opacity-75">
+        3D Interactive Poké-Capsules & Battle Cards ⚡
+      </span>
+    </div>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- TEAM GRID -->
+  <!-- ========================================================= -->
+
+  <div class="team-grid mt-12">
+
+
+    <!-- ===================== MEMBER 1 ===================== -->
+
+    <article
+      class="team-flip-card stagger-item"
+      data-member-id="1"
+      data-member-name="Student 1"
+      data-member-power="Student bio goes here."
+    >
+
+      <div class="team-flip-inner">
+
+        <!-- FRONT: POKEBALL -->
+        <div
+          class="team-card-face team-card-front pokeball-chamber"
+          onclick="teamFlipOpen(this, event)"
+        >
+
+          <div class="pokeball-stage">
+
+            <div class="pokeball-shadow-disc"></div>
+
+            <div class="pokeball-sphere ball-master">
+
+              <div class="pokeball-dome-top">
+                <div class="dome-specular-light"></div>
+                <div class="dome-rim-glow"></div>
+                <div class="masterball-m">M</div>
+                <div class="masterball-node node-left"></div>
+                <div class="masterball-node node-right"></div>
+              </div>
+
+              <div class="pokeball-belt"></div>
+
+              <div class="pokeball-center-latch">
+                <div class="latch-housing">
+                  <div class="latch-metal-bevel">
+                    <div class="latch-push-button">
+                      <span class="latch-indicator-core"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pokeball-dome-bottom">
+                <div class="dome-bottom-shade"></div>
+              </div>
+
+              <div class="pokeball-energy-burst"></div>
+              <div class="pokeball-beam-pillar"></div>
+
+            </div>
+          </div>
+
+          <div class="pokeball-pod-footer">
+
+            <div class="pokeball-target-info">
+
+              <span class="pokeball-rarity-pill">
+                ★ MASTER BALL
+              </span>
+
+              <h3 class="pokeball-role-name">
+                THE WEB HEAD
+              </h3>
+
+              <span class="pokeball-branch-tag">
+                Computer Engineering, 2nd Year
+              </span>
+
+            </div>
+
+            <div class="pokeball-tap-prompt">
+              <span class="tap-hand-icon">⚡</span>
+              <span>TAP POKÉBALL TO OPEN</span>
+              <span class="tap-sparkle">✨</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- BACK -->
+        <div class="team-card-face team-card-back anime-revealed-face">
+
+          <div class="card-holo-glare" aria-hidden="true"></div>
+
+          <div class="team-card-top-bar">
+
+            <span class="anime-rank-pill">
+              ★ SUMMONED
+            </span>
+
+            <span class="manga-sound-fx">
+              ゴゴゴゴ
+            </span>
+
+            <button
+              type="button"
+              class="flip-back-pill"
+              onclick="teamFlipClose(this, event)"
+            >
+              🔴 RECALL
+            </button>
+
+          </div>
+
+
+          <div class="anime-poster-frame">
+
+            <div class="poster-club-badge">
+              DOMAIN MATH CLUB
+            </div>
+
+            <div class="poster-header-text">
+              <span class="poster-meet">Meet</span>
+              <span class="poster-team">Our Team</span>
+            </div>
+
+            <div class="poster-photo-inner">
+
+              <img
+                class="team-member-img"
+                src="{% static 'team/Student_id.jpeg' %}"
+                alt="Student 1"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="flex items-center justify-between gap-2 mt-2">
+
+            <span class="team-role-badge">
+              <span class="role-icon">⚡</span>
+              Web Head
+            </span>
+
+            <span class="team-branch-pill">
+              Computer Engineering, 2nd Year
+            </span>
+
+          </div>
+
+
+          <h2 class="team-member-name mt-1">
+            Student 1
+          </h2>
+
+
+          <div class="team-ability-hud mt-2">
+
+            <div class="ability-header">
+              <span class="ability-title">
+                ABOUT
+              </span>
+            </div>
+
+            <div class="ability-name">
+              Student bio goes here.
+            </div>
+
+          </div>
+
+
+          <div class="mt-2 text-center">
+
+            <a
+              class="text-link text-xs uppercase"
+              href="https://example.com"
+              target="_blank"
+              rel="noopener"
+              onclick="event.stopPropagation()"
+            >
+              Connect on Social →
+            </a>
+
+          </div>
+
+
+          <div
+            class="card-flip-back-hint mt-2 text-center"
+            onclick="teamFlipClose(this, event)"
+          >
+            <span>🔴 Tap to return to Pokéball</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ===================== MEMBER 2 ===================== -->
+
+    <article class="team-flip-card stagger-item"
+      data-member-id="2"
+      data-member-name="Student 2"
+      data-member-power="Student bio goes here.">
+
+      <div class="team-flip-inner">
+
+        <div class="team-card-face team-card-front pokeball-chamber"
+          onclick="teamFlipOpen(this, event)">
+
+          <div class="pokeball-stage">
+            <div class="pokeball-shadow-disc"></div>
+
+            <div class="pokeball-sphere ball-great">
+
+              <div class="pokeball-dome-top">
+                <div class="dome-specular-light"></div>
+                <div class="dome-rim-glow"></div>
+                <div class="greatball-accent accent-left"></div>
+                <div class="greatball-accent accent-right"></div>
+              </div>
+
+              <div class="pokeball-belt"></div>
+
+              <div class="pokeball-center-latch">
+                <div class="latch-housing">
+                  <div class="latch-metal-bevel">
+                    <div class="latch-push-button">
+                      <span class="latch-indicator-core"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pokeball-dome-bottom">
+                <div class="dome-bottom-shade"></div>
+              </div>
+
+              <div class="pokeball-energy-burst"></div>
+              <div class="pokeball-beam-pillar"></div>
+
+            </div>
+          </div>
+
+          <div class="pokeball-pod-footer">
+
+            <div class="pokeball-target-info">
+
+              <span class="pokeball-rarity-pill">
+                ★ GREAT BALL
+              </span>
+
+              <h3 class="pokeball-role-name">
+                THE ROLE
+              </h3>
+
+              <span class="pokeball-branch-tag">
+                Computer Engineering, 2nd Year
+              </span>
+
+            </div>
+
+            <div class="pokeball-tap-prompt">
+              <span class="tap-hand-icon">⚡</span>
+              <span>TAP POKÉBALL TO OPEN</span>
+              <span class="tap-sparkle">✨</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="team-card-face team-card-back anime-revealed-face">
+
+          <div class="card-holo-glare" aria-hidden="true"></div>
+
+          <div class="team-card-top-bar">
+
+            <span class="anime-rank-pill">
+              ★ SUMMONED
+            </span>
+
+            <span class="manga-sound-fx">
+              ゴゴゴゴ
+            </span>
+
+            <button type="button"
+              class="flip-back-pill"
+              onclick="teamFlipClose(this, event)">
+              🔴 RECALL
+            </button>
+
+          </div>
+
+
+          <div class="anime-poster-frame">
+
+            <div class="poster-club-badge">
+              DOMAIN MATH CLUB
+            </div>
+
+            <div class="poster-header-text">
+              <span class="poster-meet">Meet</span>
+              <span class="poster-team">Our Team</span>
+            </div>
+
+            <div class="poster-photo-inner">
+
+              <img
+                class="team-member-img"
+                src="{% static 'team/Student_id.jpeg' %}"
+                alt="Student 2"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="flex items-center justify-between gap-2 mt-2">
+
+            <span class="team-role-badge">
+              <span class="role-icon">⚡</span>
+              Role
+            </span>
+
+            <span class="team-branch-pill">
+              Computer Engineering, 2nd Year
+            </span>
+
+          </div>
+
+          <h2 class="team-member-name mt-1">
+            Student 2
+          </h2>
+
+          <div class="team-ability-hud mt-2">
+
+            <div class="ability-header">
+              <span class="ability-title">ABOUT</span>
+            </div>
+
+            <div class="ability-name">
+              Student bio goes here.
+            </div>
+
+          </div>
+
+          <div class="mt-2 text-center">
+
+            <a
+              class="text-link text-xs uppercase"
+              href="https://example.com"
+              target="_blank"
+              rel="noopener"
+              onclick="event.stopPropagation()"
+            >
+              Connect on Social →
+            </a>
+
+          </div>
+
+          <div
+            class="card-flip-back-hint mt-2 text-center"
+            onclick="teamFlipClose(this, event)"
+          >
+            <span>🔴 Tap to return to Pokéball</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ===================== MEMBERS 3–20 ===================== -->
+
+    <!--
+      The remaining cards use exactly the same Pokéball
+      interaction. Only member information and photo paths change.
+    -->
+
+
+    <!-- MEMBER 3 -->
+    <article class="team-flip-card stagger-item"
+      data-member-id="3"
+      data-member-name="Student 3"
+      data-member-power="Student bio goes here.">
+
+      <div class="team-flip-inner">
+
+        <div class="team-card-face team-card-front pokeball-chamber"
+          onclick="teamFlipOpen(this, event)">
+
+          <div class="pokeball-stage">
+            <div class="pokeball-shadow-disc"></div>
+
+            <div class="pokeball-sphere ball-ultra">
+
+              <div class="pokeball-dome-top">
+                <div class="dome-specular-light"></div>
+                <div class="dome-rim-glow"></div>
+                <div class="ultraball-stripe stripe-left"></div>
+                <div class="ultraball-stripe stripe-right"></div>
+              </div>
+
+              <div class="pokeball-belt"></div>
+
+              <div class="pokeball-center-latch">
+                <div class="latch-housing">
+                  <div class="latch-metal-bevel">
+                    <div class="latch-push-button">
+                      <span class="latch-indicator-core"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pokeball-dome-bottom">
+                <div class="dome-bottom-shade"></div>
+              </div>
+
+              <div class="pokeball-energy-burst"></div>
+              <div class="pokeball-beam-pillar"></div>
+
+            </div>
+          </div>
+
+          <div class="pokeball-pod-footer">
+
+            <div class="pokeball-target-info">
+
+              <span class="pokeball-rarity-pill">
+                ★ ULTRA BALL
+              </span>
+
+              <h3 class="pokeball-role-name">
+                THE ROLE
+              </h3>
+
+              <span class="pokeball-branch-tag">
+                Computer Engineering, 2nd Year
+              </span>
+
+            </div>
+
+            <div class="pokeball-tap-prompt">
+              <span class="tap-hand-icon">⚡</span>
+              <span>TAP POKÉBALL TO OPEN</span>
+              <span class="tap-sparkle">✨</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="team-card-face team-card-back anime-revealed-face">
+
+          <div class="card-holo-glare"></div>
+
+          <div class="team-card-top-bar">
+            <span class="anime-rank-pill">★ SUMMONED</span>
+            <span class="manga-sound-fx">ゴゴゴゴ</span>
+
+            <button type="button"
+              class="flip-back-pill"
+              onclick="teamFlipClose(this, event)">
+              🔴 RECALL
+            </button>
+          </div>
+
+          <div class="anime-poster-frame">
+
+            <div class="poster-club-badge">
+              DOMAIN MATH CLUB
+            </div>
+
+            <div class="poster-header-text">
+              <span class="poster-meet">Meet</span>
+              <span class="poster-team">Our Team</span>
+            </div>
+
+            <div class="poster-photo-inner">
+
+              <img
+                class="team-member-img"
+                src="{% static 'team/Student_id.jpeg' %}"
+                alt="Student 3"
+              >
+
+            </div>
+
+          </div>
+
+          <div class="flex items-center justify-between gap-2 mt-2">
+
+            <span class="team-role-badge">
+              <span class="role-icon">⚡</span>
+              Role
+            </span>
+
+            <span class="team-branch-pill">
+              Computer Engineering, 2nd Year
+            </span>
+
+          </div>
+
+          <h2 class="team-member-name mt-1">
+            Student 3
+          </h2>
+
+          <div class="team-ability-hud mt-2">
+
+            <div class="ability-header">
+              <span class="ability-title">ABOUT</span>
+            </div>
+
+            <div class="ability-name">
+              Student bio goes here.
+            </div>
+
+          </div>
+
+          <div class="mt-2 text-center">
+            <a class="text-link text-xs uppercase"
+              href="https://example.com"
+              target="_blank"
+              rel="noopener"
+              onclick="event.stopPropagation()">
+              Connect on Social →
+            </a>
+          </div>
+
+          <div class="card-flip-back-hint mt-2 text-center"
+            onclick="teamFlipClose(this, event)">
+            <span>🔴 Tap to return to Pokéball</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+<script>
+(function () {
+  "use strict";
+
+  const FLIP_TIME = 800;
+
+  function getCard(element) {
+    return element && element.closest
+      ? element.closest(".team-flip-card")
+      : null;
+  }
+
+  window.teamFlipOpen = function (face, event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const card = getCard(face);
+    if (!card || card.classList.contains("is-flipping")) return;
+    if (card.classList.contains("is-flipped")) return;
+
+    card.classList.add("is-flipping", "is-summoning", "is-ball-opened", "is-flipped");
+    card.setAttribute("aria-expanded", "true");
+
+    window.setTimeout(function () {
+      card.classList.remove("is-flipping", "is-summoning");
+    }, FLIP_TIME + 40);
+  };
+
+  window.teamFlipClose = function (control, event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const card = getCard(control);
+    if (!card || card.classList.contains("is-flipping")) return;
+    if (!card.classList.contains("is-flipped")) return;
+
+    card.classList.add("is-flipping");
+    card.classList.remove("is-flipped", "is-ball-opened", "is-summoning");
+    card.setAttribute("aria-expanded", "false");
+
+    window.setTimeout(function () {
+      card.classList.remove("is-flipping");
+    }, FLIP_TIME + 40);
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".team-flip-card").forEach(function (card) {
+      card.setAttribute("aria-expanded", "false");
+    });
+  });
+})();
+</script>
+
+{% endblock %}
+    <!-- MEMBERS 4 TO 20 -->
