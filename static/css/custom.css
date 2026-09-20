@@ -1908,6 +1908,7 @@ body.page-hidden .math-squad-fab {
 }
 
 .puzzle-title {
+  color:white;
   font-size: clamp(2.6rem, 6vw, 5.2rem);
   line-height: 0.78;
   max-width: 8ch;
